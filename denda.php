@@ -7,6 +7,6 @@
     <title>Denda</title>
 </head>
 <body>
-    
+    <h1>Ini buat denda</h1>
 </body>
 </html>
