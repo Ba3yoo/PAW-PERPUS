@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 12:01 PM
+-- Generation Time: Dec 13, 2023 at 12:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -75,6 +75,13 @@ CREATE TABLE `denda` (
   `status_bayar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `denda`
+--
+
+INSERT INTO `denda` (`id_denda`, `id_pengembalian`, `total_denda`, `status_bayar`) VALUES
+(1, 2, 500, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -89,6 +96,24 @@ CREATE TABLE `peminjaman` (
   `id_anggota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id_peminjaman`, `tgl_pinjam`, `tgl_kembali`, `id_buku`, `id_anggota`) VALUES
+(1, '2023-12-13', '2023-12-20', 1, 1),
+(2, '2023-12-13', '2023-12-14', 1, 2);
+
+--
+-- Triggers `peminjaman`
+--
+DELIMITER $$
+CREATE TRIGGER `decrease_stock` AFTER INSERT ON `peminjaman` FOR EACH ROW UPDATE buku 
+SET stok = stok - 1
+WHERE id_buku = NEW.id_buku
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -100,6 +125,50 @@ CREATE TABLE `pengembalian` (
   `id_peminjaman` int(11) NOT NULL,
   `tgl_terima` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pengembalian`
+--
+
+INSERT INTO `pengembalian` (`id_pengembalian`, `id_peminjaman`, `tgl_terima`) VALUES
+(1, 1, '2023-12-14'),
+(2, 2, '2023-12-15');
+
+--
+-- Triggers `pengembalian`
+--
+DELIMITER $$
+CREATE TRIGGER `create_fee` AFTER INSERT ON `pengembalian` FOR EACH ROW BEGIN
+	DECLARE nilai_denda INT;
+	DECLARE tanggal INT;
+	
+    SELECT DATEDIFF(NEW.tgl_terima, tgl_kembali) INTO tanggal
+    FROM peminjaman 
+    WHERE id_peminjaman = NEW.id_peminjaman;
+
+	IF tanggal > 0
+    THEN 
+	INSERT INTO denda (id_pengembalian, total_denda, status_bayar)
+    VALUES (NEW.id_pengembalian, tanggal * 500 , 0);
+    END IF;
+    
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `increase_stock` AFTER INSERT ON `pengembalian` FOR EACH ROW BEGIN
+	DECLARE nomor_buku INT;
+
+	SELECT id_buku INTO nomor_buku 
+	FROM peminjaman
+	WHERE id_peminjaman = NEW.id_peminjaman;
+
+	UPDATE buku
+	SET stok = stok + 1
+	WHERE id_buku = nomor_buku;
+END
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -159,19 +228,19 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT for table `denda`
 --
 ALTER TABLE `denda`
-  MODIFY `id_denda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_denda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
-  MODIFY `id_pengembalian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengembalian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
