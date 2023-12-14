@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 14 Des 2023 pada 14.16
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Dec 14, 2023 at 06:29 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,51 +24,48 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anggota`
+-- Table structure for table `anggota`
 --
 
 CREATE TABLE `anggota` (
   `id_anggota` int(11) NOT NULL,
-  `Nama Lengkap` varchar(200) NOT NULL,
+  `nama` varchar(200) NOT NULL,
   `tgl_daftar` date NOT NULL DEFAULT current_timestamp(),
   `status_aktif` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `anggota`
+-- Dumping data for table `anggota`
 --
 
-INSERT INTO `anggota` (`id_anggota`, `Nama Lengkap`, `tgl_daftar`, `status_aktif`) VALUES
+INSERT INTO `anggota` (`id_anggota`, `nama`, `tgl_daftar`, `status_aktif`) VALUES
 (1, 'Jamaludin Abdurrahman ', '2023-12-06', 1),
 (2, 'Jonathan Walters', '2023-12-13', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Table structure for table `buku`
 --
 
 CREATE TABLE `buku` (
   `id_buku` int(11) NOT NULL,
   `judul` varchar(200) NOT NULL,
   `pengarang` varchar(200) NOT NULL,
-  `penerbit` text NOT NULL,
-  `ISBN` bigint(20) NOT NULL,
-  `tahun` int(4) NOT NULL,
   `stok` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `buku`
+-- Dumping data for table `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `judul`, `pengarang`, `penerbit`, `ISBN`, `tahun`, `stok`) VALUES
-(1, 'Cyber Society: Teknologi, Media Baru, dan Disrupsi Informasi', 'Catur Nugroho, S.Sos., M.I.Kom.', 'Prenada Media', 9786232187412, 2020, 3);
+INSERT INTO `buku` (`id_buku`, `judul`, `pengarang`, `stok`) VALUES
+(1, 'Walking 101 for Dummies', 'Authe Oar', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `denda`
+-- Table structure for table `denda`
 --
 
 CREATE TABLE `denda` (
@@ -79,7 +76,7 @@ CREATE TABLE `denda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `denda`
+-- Dumping data for table `denda`
 --
 
 INSERT INTO `denda` (`id_denda`, `id_pengembalian`, `total_denda`, `status_bayar`) VALUES
@@ -88,27 +85,28 @@ INSERT INTO `denda` (`id_denda`, `id_pengembalian`, `total_denda`, `status_bayar
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peminjaman`
+-- Table structure for table `peminjaman`
 --
 
 CREATE TABLE `peminjaman` (
   `id_peminjaman` int(11) NOT NULL,
-  `tgl_pinjam` date NOT NULL DEFAULT current_timestamp(),
-  `tgl_kembali` date NOT NULL,
   `id_buku` int(11) NOT NULL,
-  `id_anggota` int(11) NOT NULL
+  `id_anggota` int(11) NOT NULL,
+  `tgl_pinjam` date NOT NULL DEFAULT current_timestamp(),
+  `tgl_kembali` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `peminjaman`
+-- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`id_peminjaman`, `tgl_pinjam`, `tgl_kembali`, `id_buku`, `id_anggota`) VALUES
-(1, '2023-12-13', '2023-12-20', 1, 1),
-(2, '2023-12-13', '2023-12-14', 1, 2);
+INSERT INTO `peminjaman` (`id_peminjaman`, `id_buku`, `id_anggota`, `tgl_pinjam`, `tgl_kembali`) VALUES
+(1, 1, 1, '2023-12-13', '2023-12-20'),
+(2, 1, 2, '2023-12-13', '2023-12-14'),
+(3, 1, 1, '2023-12-14', '2023-12-21');
 
 --
--- Trigger `peminjaman`
+-- Triggers `peminjaman`
 --
 DELIMITER $$
 CREATE TRIGGER `decrease_stock` AFTER INSERT ON `peminjaman` FOR EACH ROW UPDATE buku 
@@ -120,7 +118,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengembalian`
+-- Table structure for table `pengembalian`
 --
 
 CREATE TABLE `pengembalian` (
@@ -130,7 +128,7 @@ CREATE TABLE `pengembalian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pengembalian`
+-- Dumping data for table `pengembalian`
 --
 
 INSERT INTO `pengembalian` (`id_pengembalian`, `id_peminjaman`, `tgl_terima`) VALUES
@@ -138,7 +136,7 @@ INSERT INTO `pengembalian` (`id_pengembalian`, `id_peminjaman`, `tgl_terima`) VA
 (2, 2, '2023-12-15');
 
 --
--- Trigger `pengembalian`
+-- Triggers `pengembalian`
 --
 DELIMITER $$
 CREATE TRIGGER `create_fee` AFTER INSERT ON `pengembalian` FOR EACH ROW BEGIN
@@ -178,26 +176,26 @@ DELIMITER ;
 --
 
 --
--- Indeks untuk tabel `anggota`
+-- Indexes for table `anggota`
 --
 ALTER TABLE `anggota`
   ADD PRIMARY KEY (`id_anggota`);
 
 --
--- Indeks untuk tabel `buku`
+-- Indexes for table `buku`
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`id_buku`);
 
 --
--- Indeks untuk tabel `denda`
+-- Indexes for table `denda`
 --
 ALTER TABLE `denda`
   ADD PRIMARY KEY (`id_denda`),
   ADD KEY `id_pengembalian` (`id_pengembalian`);
 
 --
--- Indeks untuk tabel `peminjaman`
+-- Indexes for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id_peminjaman`),
@@ -205,65 +203,65 @@ ALTER TABLE `peminjaman`
   ADD KEY `id_anggota` (`id_anggota`);
 
 --
--- Indeks untuk tabel `pengembalian`
+-- Indexes for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   ADD PRIMARY KEY (`id_pengembalian`),
   ADD KEY `id_peminjaman` (`id_peminjaman`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `anggota`
+-- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
   MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `buku`
+-- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
   MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `denda`
+-- AUTO_INCREMENT for table `denda`
 --
 ALTER TABLE `denda`
   MODIFY `id_denda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `peminjaman`
+-- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `pengembalian`
+-- AUTO_INCREMENT for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   MODIFY `id_pengembalian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `denda`
+-- Constraints for table `denda`
 --
 ALTER TABLE `denda`
   ADD CONSTRAINT `denda_ibfk_1` FOREIGN KEY (`id_pengembalian`) REFERENCES `pengembalian` (`id_pengembalian`);
 
 --
--- Ketidakleluasaan untuk tabel `peminjaman`
+-- Constraints for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id_buku`),
   ADD CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`);
 
 --
--- Ketidakleluasaan untuk tabel `pengembalian`
+-- Constraints for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`id_peminjaman`) REFERENCES `peminjaman` (`id_peminjaman`);
