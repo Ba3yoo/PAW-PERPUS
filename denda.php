@@ -12,15 +12,14 @@
 </head>
 <body>
 <?php
-include_once "Model/m_denda.php"; // Pastikan memasukkan file class m_denda.php
+include_once "Model/m_denda.php";
 
-// Membuat instance objek dari class m_denda
+include_once "Model/Database.php";
+
 $dendaModel = new m_denda();
-
-// Memanggil fungsi tampilDenda untuk mendapatkan data denda
 $dataDenda = $dendaModel->tampilDenda();
+include_once "View/DendaTabel.php";
 
-// Menampilkan data dalam tabel HTML
 if ($dataDenda !== false) {
     echo '<table class="table">
             <thead>
