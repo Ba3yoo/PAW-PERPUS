@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 06:29 PM
+-- Generation Time: Dec 14, 2023 at 06:35 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,6 +52,9 @@ CREATE TABLE `buku` (
   `id_buku` int(11) NOT NULL,
   `judul` varchar(200) NOT NULL,
   `pengarang` varchar(200) NOT NULL,
+  `penerbit` text NOT NULL,
+  `isbn` bigint(20) NOT NULL,
+  `tahun` int(4) NOT NULL,
   `stok` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -59,8 +62,9 @@ CREATE TABLE `buku` (
 -- Dumping data for table `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `judul`, `pengarang`, `stok`) VALUES
-(1, 'Walking 101 for Dummies', 'Authe Oar', 0);
+INSERT INTO `buku` (`id_buku`, `judul`, `pengarang`, `penerbit`, `isbn`, `tahun`, `stok`) VALUES
+(1, 'Walking 101 for Dummies', 'Authe Oar', 'Something Awful', 1234567, 2009, 2),
+(2, 'Cyber Society: Teknologi, Media Baru, dan Disrupsi Informasi', 'Catur Nugroho, S.Sos., M.I.Kom.', 'Prenada Media', 9786232187412, 2020, 3);
 
 -- --------------------------------------------------------
 
@@ -223,7 +227,7 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `denda`
