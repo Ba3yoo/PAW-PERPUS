@@ -1,8 +1,7 @@
 <?php
-
 class PinjamController {
     public $model;
-    public function addColumn( $memberid, $bookid) {
+    public function addColumn($memberid, $bookid) {
         include_once 'Model/m_pinjam.php';
         $this->model = new m_pinjam();
         $this->model->addBorrow($memberid, $bookid);
@@ -19,4 +18,12 @@ class PinjamController {
         $borrow = $this->model->getBorrow();
         include 'View/pinjamTabel.php';
     }
+}
+
+
+if(isset($_POST['id_peminjam'])) {
+    $pinjamcontrol = new PinjamController();
+    $pinjamcontrol->addColumn($_POST['id_peminjam'], $_POST['dropdown']);
+    unset($_POST['id_peminjam']);
+    header('Location: peminjaman.php');
 }
