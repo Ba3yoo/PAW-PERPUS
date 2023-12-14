@@ -1,4 +1,3 @@
-// controller.php
 <?php
 require_once 'BukuModel.php';
 
