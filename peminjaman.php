@@ -41,14 +41,19 @@ $controller = new PinjamController();
     <div class="row">
       <div class="input-group">
         <div class="col-xs-6">
-          <input type="text" class="form-control" placeholder="Start" />
+          <input type="text" class="form-control" placeholder="ID Anggota..." />
         </div>
         <span class="input-group-addon" style="padding:10px;">&nbsp</span>
         <div class="col-xs-6">
-          <input type="text" class="form-control" placeholder="End" />
+          <select name="dropdown" class="btn btn-light dropdown-toggle">
+            <option value="">Select</option>
+            <?php
+              $controller->dropDown();
+            ?>
         </div>
-        <br>
-
+      </div>
+      <div class="col-xs-6">
+        <input type="submit" class="btn btn-primary" id="addbutton" value="Tambah" disabled>
       </div>
     </div>
   </div>
@@ -58,7 +63,7 @@ $controller = new PinjamController();
   <div class="container">
     <div class="row">
 
-      <div class="col-sm-15z">
+      <div class="col-sm-15">
 
         <div class="card">
           <h5 class="card-header">Riwayat Peminjaman Buku</h5>
@@ -84,5 +89,18 @@ $controller = new PinjamController();
   </div>
 
 </body>
+<script>
+  let d = document, [inputs, submitter] = [
+    d.querySelectorAll('[type="text"], select'),
+    d.querySelector('#addbutton')]
+submitter.disabled = true
 
+for (i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener('input',() => {
+    let values = []
+    inputs.forEach(v => values.push(v.value))
+    submitter.disabled = values.includes('')
+  })
+}
+</script>
 </html>

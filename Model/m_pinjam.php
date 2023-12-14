@@ -11,6 +11,16 @@ class m_pinjam
         require("Database.php");
         $mysqli->query("INSERT INTO peminjaman (`tgl_pinjam`, `tgl_kembali`, `id_buku`, `id_anggota`) VALUES (NOW(), DATEADD(day, 7, NOW()), '$bookid', '$memberid')");
     }
+    public function availBook() {
+        require("Database.php");
+        $rs = $mysqli->query("SELECT id_buku, judul FROM buku WHERE stok > 0");
+        $rows = array();
+        while ($row = $rs->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        $this->results = $rows;
+        return $this->results;
+    }
     public function getBorrow()
     {
         require("Database.php");
