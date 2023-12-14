@@ -1,30 +1,37 @@
 <?php
-require_once 'BukuModel.php';
+require_once "m_dataBuku.php";
 
-$action = isset($_GET['action']) ? $_GET['action'] : '';
+class BukuController {
+    private $bukuModel;
 
-$bukuModel = new BukuModel();
+    public function __construct() {
+        $this->bukuModel = new m_dataBuku();
+    }
 
-switch ($action) {
-    case 'tambahBuku':
-        $dataBuku = $_POST['dataBuku'];
-        $bukuModel->tambahBuku($dataBuku);
-        header('Location: daftar_buku.php');
-        break;
+    public function tambahBuku($judul, $pengarang, $penerbit, $ISBN, $tahun, $stok) {
+        $result = $this->bukuModel->tambahBuku($judul, $pengarang, $penerbit, $ISBN, $tahun, $stok);
+        if ($result) {
+            echo "Buku berhasil ditambahkan.";
+        } else {
+            echo "Gagal menambahkan buku.";
+        }
+    }
 
-    case 'hapusBuku':
-        $idBuku = $_GET['idBuku'];
-        $bukuModel->hapusBuku($idBuku);
-        header('Location: daftar_buku.php');
-        break;
+    public function hapusBuku($idBuku) {
+        $result = $this->bukuModel->hapusBuku($idBuku);
+        if ($result) {
+            echo "Buku berhasil dihapus.";
+        } else {
+            echo "Gagal menghapus buku.";
+        }
+    }
 
-    case 'cariBuku':
-        $kataKunci = $_POST['kataKunci'];
-        $hasilPencarian = $bukuModel->cariBuku($kataKunci);
-        include 'hasil_pencarian.php';
-        break;
+    public function cariBuku($kataKunci) {
+        $hasilPencarian = $this->bukuModel->cariBuku($kataKunci);
+    }
 
-    default:
-        $daftarBuku = $bukuModel->dapatkanSemuaBuku();
-        include 'daftar_buku.php';
+    public function tampilBuku() {
+        $buku = $this->bukuModel->tampilBuku();
+        include_once "View/v_dataBuku.php";
+    }
 }
