@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 12:54 PM
+-- Generation Time: Dec 14, 2023 at 09:05 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -90,19 +90,19 @@ INSERT INTO `denda` (`id_denda`, `id_pengembalian`, `total_denda`, `status_bayar
 
 CREATE TABLE `peminjaman` (
   `id_peminjaman` int(11) NOT NULL,
-  `tgl_pinjam` date NOT NULL DEFAULT current_timestamp(),
-  `tgl_kembali` date NOT NULL,
   `id_buku` int(11) NOT NULL,
-  `id_anggota` int(11) NOT NULL
+  `id_anggota` int(11) NOT NULL,
+  `tgl_pinjam` date NOT NULL DEFAULT current_timestamp(),
+  `tgl_kembali` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`id_peminjaman`, `tgl_pinjam`, `tgl_kembali`, `id_buku`, `id_anggota`) VALUES
-(1, '2023-12-13', '2023-12-20', 1, 1),
-(2, '2023-12-13', '2023-12-14', 1, 2);
+INSERT INTO `peminjaman` (`id_peminjaman`, `id_buku`, `id_anggota`, `tgl_pinjam`, `tgl_kembali`) VALUES
+(1, 1, 1, '2023-12-13', '2023-12-20'),
+(2, 1, 2, '2023-12-13', '2023-12-14');
 
 --
 -- Triggers `peminjaman`
