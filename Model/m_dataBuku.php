@@ -1,6 +1,20 @@
 <?php
+require "Database.php";
+
+
 class BukuModel {
-    public function tambahBuku($dataBuku) {
+    public function tambahBuku($) {
+        require ("Database.php");
+        $query = "INSERT denda SET status_bayar = 1 WHERE id_denda = '$id_denda'";
+
+        $mysqli = Database::connect();
+        $result = $mysqli->query($query);
+
+        if($result){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public function hapusBuku($idBuku) {
@@ -9,6 +23,6 @@ class BukuModel {
     public function cariBuku($kataKunci) {
     }
 
-    public function dapatkanSemuaBuku() {
+    public function tampilBuku() {
     }
 }
