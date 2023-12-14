@@ -10,7 +10,8 @@
     <title>Document</title>
 </head>
 <body>
-<ul class="nav nav-tabs">
+
+<!-- <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link" href="index.php">Home</a>
   </li>
@@ -23,6 +24,19 @@
   <li class="nav-item">
     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
-</ul>
+</ul> -->
+
+<h1>Peminjaman</h1>
+
+<div class="input-group">
+  <div class="col-xs-6">
+    <input type="text" class="form-control" placeholder="Start"/>
+  </div>
+  <span class="input-group-addon">&nbsp</span>
+  <div class="col-xs-6">
+    <input type="text" class="form-control" placeholder="End"/>
+  </div>
+</div>
+
 </body>
 </html>
