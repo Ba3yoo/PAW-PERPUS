@@ -1,12 +1,12 @@
 <?php
-require "Database.php";
+require_once "Database.php";
 
 class m_denda{
     public function bayarDenda($id_denda){
-        require ("Database.php");
         $query = "UPDATE denda SET status_bayar = 1 WHERE id_denda = '$id_denda'";
 
-        $mysqli = Database::connect();
+        $db = new Database();
+        $mysqli = $db->getConnection();
         $result = $mysqli->query($query);
 
         if($result){
@@ -17,10 +17,10 @@ class m_denda{
     }
 
     public function tampilDenda(){
-        require ("Database.php");
         $query = "SELECT * from denda where status_bayar = 0";
 
-        $mysqli = Database::connect();
+        $db = new Database();
+        $mysqli = $db->getConnection();
         $result = $mysqli->query($query);
         if($result){
             $data = array();

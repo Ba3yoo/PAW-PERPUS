@@ -1,11 +1,16 @@
 <?php
-foreach ($denda as $denda) {
-        echo "<tr>",
-        "<td>$denda[id_denda]</td>",
-        "<td>$denda[id_pengembalian]</td>",
-        "<td>$denda[total_denda]</td>",
-        "<td>$denda[status_bayar]</td>",
+$dendaModel = new m_denda();
+$denda = $dendaModel->tampilDenda();
+
+include_once "View/DendaTabel.php";
+foreach ($denda as $row) {
+    echo "<tr>",
+        "<td>{$row['id_denda']}</td>",
+        "<td>{$row['id_pengembalian']}</td>",
+        "<td>{$row['total_denda']}</td>",
+        "<td>{$row['status_bayar']}</td>",
         "</tr>";
 }
+
 echo "</tbody>";
 echo "</table>";
