@@ -37,11 +37,11 @@ $controller = new PinjamController();
     </div>
   </div>
   <br>
-  <div class="container">
+  <form class="container" name="addition" method="post" action="">
     <div class="row">
       <div class="input-group">
         <div class="col-xs-6">
-          <input type="text" class="form-control" placeholder="ID Anggota..." />
+          <input type="text" name="id_peminjam" class="form-control" placeholder="ID Anggota..." />
         </div>
         <span class="input-group-addon" style="padding:10px;">&nbsp</span>
         <div class="col-xs-6">
@@ -56,7 +56,7 @@ $controller = new PinjamController();
         <input type="submit" class="btn btn-primary" id="addbutton" value="Tambah" disabled>
       </div>
     </div>
-  </div>
+</form>
 
   <br>
 
@@ -76,6 +76,7 @@ $controller = new PinjamController();
                   <th>Peminjam</th>
                   <th>Tanggal Pinjam</th>
                   <th>Tanggal Kembali</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
