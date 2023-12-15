@@ -30,7 +30,7 @@ $controller = new PinjamController();
     <div class="row">
       <div class="input-group">
         <div class="col-xs-6">
-          <select name="id_peminjam" class="btn btn-light dropdown-toggle" style="max-width: 250px;">
+          <select name="id_peminjam" class="btn btn-light dropdown-toggle" style="width: 250px;">
             <option value="">--Pilihan Anggota--</option>
             <?php
             $controller->dropDownMember();
@@ -38,7 +38,7 @@ $controller = new PinjamController();
         </div>
         <span class="input-group-addon" style="padding:10px;">&nbsp</span>
         <div class="col-xs-6">
-          <select name="dropdown" class="btn btn-light dropdown-toggle" style="max-width: 250px;">
+          <select name="dropdown" class="btn btn-light dropdown-toggle" style="width: 250px;">
             <option value="">--Pilihan Buku--</option>
             <?php
             $controller->dropDownBook();
@@ -97,7 +97,7 @@ $controller = new PinjamController();
     inputs[i].addEventListener('input', () => {
       let selection = []
       inputs.forEach(v => selection.push(v.value))
-      submitter.disabled = selection.includes('')
+      submitter.disabled = selection.includes('') ;
     })
   }
 
