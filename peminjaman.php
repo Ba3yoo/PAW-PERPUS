@@ -16,20 +16,9 @@ $controller = new PinjamController();
 
 <body>
 
-  <!-- <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link" href="index.php">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Peminjaman</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-  </li>
-</ul> -->
+<?php
+  include "layouts/navbar.php";
+?>
 
   <div class="container">
     <div class="row">
@@ -111,6 +100,10 @@ $controller = new PinjamController();
       submitter.disabled = values.includes('')
     })
   }
+
+  const current = document.getElementById("peminjaman-nav");
+  current.classList.add("active");
+  current.setAttribute("aria-current", "page");
 </script>
 
 </html>
