@@ -21,7 +21,7 @@ class m_anggota {
     public function deleteAnggota($id) {
         $db = new Database();
         $mysqli = $db->getConnection();
-        $rs = $mysqli->query("DELETE FROM anggota WHERE id_anggota = '$idAnggota'");
+        $rs = $mysqli->query("DELETE FROM anggota WHERE id_anggota = '$id'");
         return $rs;
     }
 
