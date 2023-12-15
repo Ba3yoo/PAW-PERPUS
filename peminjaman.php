@@ -88,16 +88,16 @@ $controller = new PinjamController();
 <script>
   let d = document,
     [inputs, submitter] = [
-      d.querySelectorAll('[type="text"], select'),
+      d.querySelectorAll('select'),
       d.querySelector('#addbutton')
     ]
   submitter.disabled = true
 
   for (i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener('input', () => {
-      let values = []
-      inputs.forEach(v => values.push(v.value))
-      submitter.disabled = values.includes('')
+      let selection = []
+      inputs.forEach(v => selection.push(v.value))
+      submitter.disabled = selection.includes('')
     })
   }
 
