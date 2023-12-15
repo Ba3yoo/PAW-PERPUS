@@ -110,6 +110,7 @@ $controller = new c_dataBuku();
                   <th>ISBN</th>
                   <th>Tahun</th>
                   <th>Stok</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
