@@ -17,6 +17,13 @@ class m_dataBuku {
         return $rs;
     }
 
+    public function editBuku($idBuku, $judul, $pengarang, $penerbit, $ISBN, $tahun, $stok) {
+        $db = new Database();
+        $mysqli = $db->getConnection();
+        $rs = $mysqli->query("UPDATE buku SET judul = '$judul' pengarang = '$pengarang' penerbit = '$penerbit' isbn = '$ISBN' tahun = '$tahun' stok = '$stok' where id_buku = '$idBuku'");
+        return $rs;
+    }
+
     public function cariBuku($judul, $pengarang, $penerbit) {
         $db = new Database();
         $mysqli = $db->getConnection();

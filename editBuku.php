@@ -17,20 +17,38 @@ if(isset($_GET['edit'])){
                   </div>
                   <div class="modal-body">
                     <div class="form-group">
-                        <input type="hidden" name="id" value="<?php echo $_GET['edit']; ?>">
+                        <input type="hidden" name="id_buku" value="<?php echo $_GET['edit']; ?>">
                     </div>
                     <div class="form-group">
-                        <label>Nama Anggota</label>
-                        <input type="text" name="nama" value="<?php echo $_GET['nama']; ?>" required>
+                        <label>Judul Buku</label>
+                        <input type="text" name="judul" value="<?php echo $_GET['judul']; ?>" required>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label>Status Anggota</label><br>
-                        <select id="status" name="status">
-                        <option value="0" <?php if($_GET['status'] == 0) echo 'selected'; ?>>Tidak Aktif</option>
-                        <option value="1" <?php if($_GET['status'] == 1) echo 'selected'; ?>>Aktif</option>
-                    </select>
+                        <label>Nama Pengarang</label>
+                        <input type="text" name="pengarang" value="<?php echo $_GET['pengarang']; ?>" required>
                     </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Penerbit</label>
+                        <input type="text" name="penerbit" value="<?php echo $_GET['penerbit']; ?>" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>ISBN</label>
+                        <input type="text" name="isbn" value="<?php echo $_GET['isbn']; ?>" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Tahun</label>
+                        <input type="text" name="tahun" value="<?php echo $_GET['tahun']; ?>" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>stok</label>
+                        <input type="text" name="stok" value="<?php echo $_GET['stok']; ?>" required>
+                    </div>
+                    <br>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
