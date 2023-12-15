@@ -3,15 +3,17 @@ require_once "Database.php";
 
 class m_pengembalian {
 
-    public static function getPengembalian($id) {
+    public static function getPengembalian() {
         $db = new Database();
         $mysqli = $db->getConnection();
-        $result = $mysqli->query("SELECT");
-        if ($result) {
-            return $result->fetch_assoc();
-        } else {
-            return false;
+        $result = $mysqli->query("SELECT pengembalian.id_pengembalian, anggota.nama, buku.judul, pengembalian.tgl_pinjam, pengembalian.tgl_kembali, pengembalian.tgl_terima
+                                FROM pengembalian
+                                JOIN anggota ON anggota.id_anggota = pengembalian.id_anggota
+                                JOIN buku ON buku.id_buku = pengembalian.id_buku;");
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
         }
+        return $rows;
 
 
     }
