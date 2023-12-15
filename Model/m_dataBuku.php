@@ -11,6 +11,8 @@ class m_dataBuku {
     }
 
     public function hapusBuku($idBuku) {
+        $db = new Database();
+        $mysqli = $db->getConnection();
         $rs = $mysqli->query("DELETE FROM buku WHERE id_buku = '$idBuku'");
         return $rs;
     }

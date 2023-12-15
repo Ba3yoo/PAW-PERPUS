@@ -40,12 +40,13 @@ if(isset($_GET['delete'])){
     $keyword = $_GET['keyword'];
     $controller = new anggotaController();
     $controller->searchAnggota($keyword);
-} else if(isset($_GET['edit'])){
-    $id = $_GET['edit'];
-    $nama = $_GET['nama'];
-    $status = $_GET['status'];
+} else if(isset($_POST['edit'])){
+    $id = $_POST['id'];
+    $nama = $_POST['nama'];
+    $status = $_POST['status'];
     $controller = new anggotaController();
     $controller->editAnggota($id, $nama, $status);
+    header('Location: anggota.php');
 } if (isset($_POST['nama'])) {
     $controller = new anggotaController();
     $controller->addAnggota($_POST['nama'], $_POST['status']);

@@ -1,6 +1,8 @@
 <?php
 $model = new m_anggota();
 $anggota = $model->showAnggota();
+include_once 'Controller/anggotaController.php';
+$controller = new anggotaController();
 
 include_once "View/tabelAnggota.php";
 foreach ($anggota as $row) {
@@ -17,6 +19,5 @@ foreach ($anggota as $row) {
         echo "<td><a href='controller/anggotaController.php?delete={$row['id_anggota']}' class='btn btn-secondary'>Delete</a></td>";
         echo "</tr>";
 }
-
 echo "</tbody>";
 echo "</table>";
