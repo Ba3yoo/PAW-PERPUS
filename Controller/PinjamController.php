@@ -6,7 +6,13 @@ class PinjamController {
         $this->model = new m_pinjam();
         $this->model->addBorrow($memberid, $bookid);
     }
-    public function dropDown() {
+    public function dropDownMember() {
+        include_once 'Model/m_pinjam.php';
+        $this->model = new m_pinjam();
+        $available = $this->model->availMem();
+        include 'View/anggotaDrop.php';
+    }
+    public function dropDownBook() {
         include_once 'Model/m_pinjam.php';
         $this->model = new m_pinjam();
         $available = $this->model->availBook();

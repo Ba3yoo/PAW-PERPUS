@@ -18,6 +18,18 @@ class m_pinjam
         WHERE id_buku = '$bookid'");
         endif;
     }
+    public function availMem()
+    {
+        $db = new Database();
+        $mysqli = $db->getConnection();
+        $rs = $mysqli->query("SELECT id_anggota, nama FROM anggota WHERE status_aktif = 1");
+        $rows = array();
+        while ($row = $rs->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        $this->results = $rows;
+        return $this->results;
+    }
     public function availBook()
     {
         $db = new Database();
@@ -37,7 +49,8 @@ class m_pinjam
         $rs = $mysqli->query("SELECT peminjaman.id_peminjaman, buku.judul, anggota.nama, peminjaman.tgl_pinjam, peminjaman.tgl_kembali
         FROM peminjaman
         JOIN anggota ON anggota.id_anggota = peminjaman.id_anggota
-        JOIN buku ON buku.id_buku = peminjaman.id_buku");
+        JOIN buku ON buku.id_buku = peminjaman.id_buku
+        ORDER BY peminjaman.id_peminjaman ASC");
         $rows = array();
         while ($row = $rs->fetch_assoc()) {
             $rows[] = $row;

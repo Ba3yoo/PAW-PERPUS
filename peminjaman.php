@@ -41,14 +41,18 @@ $controller = new PinjamController();
     <div class="row">
       <div class="input-group">
         <div class="col-xs-6">
-          <input type="text" name="id_peminjam" class="form-control" placeholder="ID Anggota..." />
+          <select name="id_peminjam" class="btn btn-light dropdown-toggle">
+            <option value="">ID Anggota...</option>
+            <?php
+              $controller->dropDownMember();
+            ?>
         </div>
         <span class="input-group-addon" style="padding:10px;">&nbsp</span>
         <div class="col-xs-6">
           <select name="dropdown" class="btn btn-light dropdown-toggle">
             <option value="">Select</option>
             <?php
-              $controller->dropDown();
+              $controller->dropDownBook();
             ?>
         </div>
       </div>
