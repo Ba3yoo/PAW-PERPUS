@@ -28,13 +28,12 @@ class m_anggota {
     public function searchAnggota($katakunci) {
         $db = new Database();
         $mysqli = $db->getConnection();
-        $rs = $mysqli->query("SELECT * FROM anggota WHERE id_anggota = $keyword or nama like '%$keyword%'");
+        $rs = $mysqli->query("SELECT * FROM anggota WHERE id_anggota = '$katakunci' OR nama LIKE '%$katakunci%'"); // Memperbaiki query pencarian
         $rows = array();
         while ($row = $rs->fetch_assoc()) {
             $rows[] = $row;
         }
-        $this->hasil = $rows;
-        return $this->hasil;
+        return $rows;
     }
 
     public function showAnggota() {

@@ -8,9 +8,9 @@ class anggotaController {
         $this->model->addAnggota($nama, $status);
     }
     public function searchAnggota($keyword) {
-        include_once '../Model/m_anggota.php';
+        include_once 'Model/m_anggota.php';
         $this->model = new m_anggota();
-        $hasilPencarian = $this->model->cariBuku($kataKunci);
+        $hasilPencarian = $this->model->searchAnggota($keyword);
         include 'View/tabelAnggota.php';
     }
     public function deleteAnggota($idAnggota) {
@@ -47,7 +47,7 @@ if(isset($_GET['delete'])){
     $controller = new anggotaController();
     $controller->editAnggota($id, $nama, $status);
     header('Location: anggota.php');
-} if (isset($_POST['add'])) {
+} else if (isset($_POST['add'])) {
     $controller = new anggotaController();
     $controller->addAnggota($_POST['nama'], $_POST['status']);
     unset($_POST['nama']);
