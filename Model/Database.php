@@ -5,7 +5,7 @@ class Database {
     private $username = 'root';
     private $password = '';
     private $database = 'paw-perpus';
-    private $connection;
+    public $connection;
 
     public function __construct() {
         $this->connection = new mysqli($this->host, $this->username, $this->password, $this->database);
