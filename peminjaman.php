@@ -44,7 +44,7 @@ $controller = new PinjamController();
           <select name="id_peminjam" class="btn btn-light dropdown-toggle">
             <option value="">ID Anggota...</option>
             <?php
-              $controller->dropDownMember();
+            $controller->dropDownMember();
             ?>
         </div>
         <span class="input-group-addon" style="padding:10px;">&nbsp</span>
@@ -52,7 +52,7 @@ $controller = new PinjamController();
           <select name="dropdown" class="btn btn-light dropdown-toggle">
             <option value="">Select</option>
             <?php
-              $controller->dropDownBook();
+            $controller->dropDownBook();
             ?>
         </div>
       </div>
@@ -60,7 +60,7 @@ $controller = new PinjamController();
         <input type="submit" class="btn btn-primary" id="addbutton" value="Tambah" disabled>
       </div>
     </div>
-</form>
+  </form>
 
   <br>
 
@@ -72,21 +72,23 @@ $controller = new PinjamController();
         <div class="card">
           <h5 class="card-header">Riwayat Peminjaman Buku</h5>
           <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Judul Buku</th>
-                  <th>Peminjam</th>
-                  <th>Tanggal Pinjam</th>
-                  <th>Tanggal Kembali</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                $controller->tableView();
-                ?>
+            <div style="height:300px;overflow:auto;">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Judul Buku</th>
+                    <th>Peminjam</th>
+                    <th>Tanggal Pinjam</th>
+                    <th>Tanggal Kembali</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $controller->tableView();
+                  ?>
+            </div>
           </div>
         </div>
       </div>
@@ -95,17 +97,20 @@ $controller = new PinjamController();
 
 </body>
 <script>
-  let d = document, [inputs, submitter] = [
-    d.querySelectorAll('[type="text"], select'),
-    d.querySelector('#addbutton')]
-submitter.disabled = true
+  let d = document,
+    [inputs, submitter] = [
+      d.querySelectorAll('[type="text"], select'),
+      d.querySelector('#addbutton')
+    ]
+  submitter.disabled = true
 
-for (i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener('input',() => {
-    let values = []
-    inputs.forEach(v => values.push(v.value))
-    submitter.disabled = values.includes('')
-  })
-}
+  for (i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('input', () => {
+      let values = []
+      inputs.forEach(v => values.push(v.value))
+      submitter.disabled = values.includes('')
+    })
+  }
 </script>
+
 </html>
