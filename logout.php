@@ -1,6 +1,6 @@
 <?php
-    session_start(); //inisialisasi session
-    if(session_destroy()) {//menghapus session
-        header("Location: index.php"); //jika berhasil maka akan diredirect ke file index.php
+    session_start(); 
+    if(session_destroy()) {
+        header("Location: index.php"); 
     }
 ?>

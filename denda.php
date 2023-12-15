@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <?php
+    include_once "layouts/navbar.php";
+    ?>
     <h2>Data Denda</h2>
     <nav class="navbar navbar-white bg-white">
     <form class="d-flex justify-content-between custom-search-form" method="post" action="">
@@ -78,12 +81,12 @@ if ($dataDenda !== false) {
                 id_denda: idDenda
             },
             success: function(response) {
-                console.log(response); // Tampilkan respons di konsol
+                console.log(response);
                 alert(response);
                 $("#row_" + idDenda).hide();
             },
             error: function(xhr, status, error) {
-                console.log(xhr.responseText); // Tampilkan pesan kesalahan di konsol
+                console.log(xhr.responseText);
                 alert("Gagal memperbarui status bayar. Error: " + error);
             }
         });

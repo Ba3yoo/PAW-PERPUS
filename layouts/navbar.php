@@ -19,7 +19,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg" style="background-color:#F27851;">
-        <a href="index.php"><img src="assets/images/icon.png" alt="icon-perpus" style="margin-top: 0.2rem; margin-left:2rem; width:100px;"></a>
+        <a href="index.php"><img src="assets/images/icon.png" alt="icon-perpus" style="margin-top: 0.2rem; margin-left:1.2rem; width:100px;"></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

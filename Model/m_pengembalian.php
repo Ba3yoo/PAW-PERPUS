@@ -48,7 +48,6 @@ class m_pengembalian {
                   FROM pengembalian 
                   WHERE id_pengembalian = ?";
     
-        // Gunakan prepared statement untuk melindungi dari SQL injection
         $stmt = $mysqli->prepare($query);
         $stmt->bind_param("i", $id_pengembalian);
         $stmt->execute();
@@ -57,7 +56,6 @@ class m_pengembalian {
         while ($row = $result->fetch_assoc()) {
             $date = $row["tanggal"];
             if ($date > 0) {
-                // Insert data denda dengan perhitungan tanggal * 500
                 $total_denda = $date * 500;
                 $mysqli->query("INSERT INTO denda (id_pengembalian, total_denda, status_bayar)
                                 VALUES ($id_pengembalian, $total_denda, 0)");
