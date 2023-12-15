@@ -21,11 +21,6 @@ class c_dataBuku {
         $this->model->editBuku($idBuku, $judul, $pengarang, $penerbit, $ISBN, $tahun, $stok);
     }
 
-    public function cariBuku($kataKunci) {
-        include_once "m_dataBuku.php";
-        $hasilPencarian = $this->bukuModel->cariBuku($kataKunci);
-    }
-
     public function tampilBuku() {
         include_once 'Model/m_dataBuku.php';
         $this->model = new m_dataBuku();

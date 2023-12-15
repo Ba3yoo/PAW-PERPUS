@@ -24,18 +24,6 @@ class m_dataBuku {
         return $rs;
     }
 
-    public function cariBuku($judul, $pengarang, $penerbit) {
-        $db = new Database();
-        $mysqli = $db->getConnection();
-        $rs = $mysqli->query("SELECT * FROM buku WHERE judul LIKE '%$judul%' OR pengarang LIKE '%$pengarang%' OR penerbit LIKE '%$penerbit%'");
-        $rows = array();
-        while ($row = $rs->fetch_assoc()) {
-            $rows[] = $row;
-        }
-        $this->hasil = $rows;
-        return $this->hasil;
-    }
-
     public function tampilBuku() {
         $db = new Database();
         $mysqli = $db->getConnection();
