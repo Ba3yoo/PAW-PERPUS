@@ -14,7 +14,7 @@ class m_anggota {
     public function editAnggota($id, $nama, $status) {
         $db = new Database();
         $mysqli = $db->getConnection();
-        $rs = $mysqli->query("UPDATE anggota SET nama = '$nama' status_aktif = '$status' where id_anggota = '$id'");
+        $rs = $mysqli->query("UPDATE anggota SET nama = '$nama', status_aktif = '$status' where id_anggota = '$id'");
         return $rs;
     }
 

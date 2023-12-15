@@ -47,7 +47,7 @@ if(isset($_GET['delete'])){
     $controller = new anggotaController();
     $controller->editAnggota($id, $nama, $status);
     header('Location: anggota.php');
-} if (isset($_POST['nama'])) {
+} if (isset($_POST['add'])) {
     $controller = new anggotaController();
     $controller->addAnggota($_POST['nama'], $_POST['status']);
     unset($_POST['nama']);
