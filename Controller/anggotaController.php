@@ -20,9 +20,9 @@ class anggotaController {
         header('Location: ../anggota.php');
     }
     public function editAnggota($id, $nama, $status) {
-        include_once '../Model/m_anggota.php';
+        include_once 'Model/m_anggota.php';
         $this->model = new m_anggota();
-        $this->model->addAnggota($id, $nama, $status);
+        $this->model->editAnggota($id, $nama, $status);
     }
     public function showAnggota() {
         include_once 'Model/m_anggota.php';

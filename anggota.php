@@ -15,6 +15,10 @@ $controller = new anggotaController();
 </head>
 
 <body>
+  <?php
+    include "layouts/navbar.php";
+  ?>
+
   <div class="container">
     <div class="row">
       <h1>Anggota</h1>
@@ -49,9 +53,9 @@ $controller = new anggotaController();
                         <label>Nama Anggota</label>
                         <input type="text" name="nama" class="form-control" required>
                     </div>
-
+                    <br>
                     <div class="form-group">
-                        <label>Status Anggota</label>
+                        <label>Status Anggota</label><br>
                         <select name="status">
                           <option value="1">Aktif</option>
                           <option value="0">Tidak Aktif</option>
@@ -89,5 +93,46 @@ $controller = new anggotaController();
       </div>
     </div>
   </div>
+  <!-- ... Bagian lain dari kode Anda ... -->
+
+<?php
+// ...
+if(isset($_GET['edit'])){
+    $id = $_GET['edit'];
+    $nama = $_GET['nama'];
+    $status = $_GET['status'];
+?>
+    <!-- Modal untuk Edit -->
+    <form class="container" name="editAnggota" method="post" action="anggotaController.php">
+        <div class="modal fade" id="editAnggota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- ... Bagian lain dari modal ... -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Nama Anggota</label>
+                    <input type="text" name="nama" class="form-control" value="<?php echo $nama; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Status Anggota</label>
+                    <select name="status" class="form-control">
+                        <option value="1" <?php if($status == 1) echo 'selected'; ?>>Aktif</option>
+                        <option value="0" <?php if($status == 0) echo 'selected'; ?>>Tidak Aktif</option>
+                    </select>
+                </div>
+            </div>
+            <!-- ... Bagian lain dari modal ... -->
+        </div>
+    </form>
+    <!-- Tutup Modal -->
+<?php } ?>
+<!-- ... Bagian lain dari kode Anda ... -->
+
+  <script>
+    const current = document.getElementById("anggota-nav");
+    current.classList.add("active");
+    current.setAttribute("aria-current", "page");
+  </script>
 </body>
 </html>

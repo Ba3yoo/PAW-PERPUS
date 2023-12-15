@@ -15,9 +15,11 @@ foreach ($anggota as $row) {
         } else if($row['status_aktif'] == 1){
             echo "<td>Aktif</td>";
         }
-        echo "<td><a href='editAnggota.php?edit={$row['id_anggota']}?nama={$row['nama']}?status={$row['status_aktif']}' class='btn btn-primary'>Edit</a></td>";
+        // echo "<td><a href='editAnggota.php?edit={$row['id_anggota']}&nama={$row['nama']}&status={$row['status_aktif']}' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editAnggota''>Edit</a></td>";
+        echo "<td><a href='editAnggota.php?edit={$row['id_anggota']}&nama={$row['nama']}&status={$row['status_aktif']}' class='btn btn-primary'>Edit</a></td>";
         echo "<td><a href='controller/anggotaController.php?delete={$row['id_anggota']}' class='btn btn-secondary'>Delete</a></td>";
         echo "</tr>";
 }
 echo "</tbody>";
 echo "</table>";
+?>
