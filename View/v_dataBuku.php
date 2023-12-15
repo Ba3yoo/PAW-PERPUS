@@ -9,7 +9,7 @@ foreach ($buku as $row) {
         "<td>{$row['judul']}</td>",
         "<td>{$row['pengarang']}</td>",
         "<td>{$row['penerbit']}</td>",
-        "<td>{$row['ISBN']}</td>",
+        "<td>{$row['isbn']}</td>",
         "<td>{$row['tahun']}</td>",
         "<td>{$row['stok']}</td>",
         "</tr>";
