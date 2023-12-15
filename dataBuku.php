@@ -41,11 +41,64 @@ $controller = new c_dataBuku();
 
   <div class="container">
     <div class="row">
-
       <div class="col-sm-15">
-
         <div class="card">
-          <h5 class="card-header">Data Buku</h5>
+          <h5 class="card-header">Data Buku  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Tambah Buku
+</button></h5>
+
+<!-- Modal -->
+<form class="container" name="addition" method="post" action="">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Koleksi Buku</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+            <label>Judul Buku</label>
+            <input type="text" name="judul" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Nama Pengarang</label>
+            <input type="text" name="pengarang" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Penerbit</label>
+            <input type="text" name="penerbit" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>ISBN</label>
+            <input type="text" name="isbn" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Tahun Terbit</label>
+            <input type="text" name="tahun" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Stok</label>
+            <input type="text" name="stok" class="form-control">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary">Simpan Buku</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!-- Tutup Modal -->
+
           <div class="card-body">
             <table class="table table-striped">
               <thead>

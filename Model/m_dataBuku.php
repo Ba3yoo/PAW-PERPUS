@@ -6,7 +6,7 @@ class m_dataBuku {
     public function tambahBuku($judul, $pengarang, $penerbit, $ISBN, $tahun, $stok) {
         $db = new Database();
         $mysqli = $db->getConnection();
-        $rs = $mysqli->query("INSERT INTO buku VALUES ('$judul', '$pengarang','$penerbit','$ISBN','$tahun','$stok')");
+        $rs = $mysqli->query("INSERT INTO buku (judul, pengarang, penerbit, isbn, tahun, stok) VALUES ('$judul', '$pengarang','$penerbit','$ISBN','$tahun','$stok')");
         return $rs;
     }
 

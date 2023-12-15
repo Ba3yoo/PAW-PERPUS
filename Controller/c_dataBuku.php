@@ -2,10 +2,10 @@
 class c_dataBuku {
     public $bukuModel;
 
-    public function tambahKolom($id_buku, $judul, $pengarang, $penerbit, $ISBN, $tahun, $stok) {
+    public function tambahKolom($judul, $pengarang, $penerbit, $ISBN, $tahun, $stok) {
         include_once 'Model/m_dataBuku.php';
-        $this->model = new m_pinjam();
-        $this->model->tambahBuku($memberid, $bookid);
+        $this->model = new m_dataBuku();
+        $this->model->tambahBuku($judul, $pengarang, $penerbit, $ISBN, $tahun, $stok);
     }
 
     public function cariBuku($kataKunci) {
@@ -19,4 +19,11 @@ class c_dataBuku {
         $borrow = $this->model->tampilBuku();
         include 'View/v_dataBuku.php';
     }
+}
+
+if (isset($_POST['judul'])) {
+    $dataBuku = new c_dataBuku();
+    $dataBuku->tambahKolom($_POST['judul'], $_POST['pengarang'], $_POST['penerbit'], $_POST['isbn'], $_POST['tahun'], $_POST['stok']);
+    unset($_POST['judul']);
+    header('Location: dataBuku.php');
 }
