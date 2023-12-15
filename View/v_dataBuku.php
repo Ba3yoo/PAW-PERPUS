@@ -12,6 +12,7 @@ foreach ($buku as $row) {
         "<td>{$row['isbn']}</td>",
         "<td>{$row['tahun']}</td>",
         "<td>{$row['stok']}</td>";
+        echo "<td><a href='controller/c_dataBuku.php?edit={$row['id_buku']}&judul={$row['judul']}&pengarang={$row['pengarang']}&penerbit={$row['penerbit']}&isbn={$row['isbn']}&tahun={$row['tahun']}&stok={$row['stok']}' class='btn btn-primary'>Edit</a></td>";
         echo "<td><a href='controller/c_dataBuku.php?delete={$row['id_buku']}' class='btn btn-secondary'>Delete</a></td>";
         echo "</tr>";
 }
