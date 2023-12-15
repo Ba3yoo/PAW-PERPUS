@@ -33,7 +33,7 @@ $controller = new c_dataBuku();
       <div class="col-sm-15">
         <div class="card">
           <h5 class="card-header">Data Buku  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Tambah Buku
+Tambah Buku
 </button></h5>
 
 <!-- Modal -->
@@ -80,7 +80,7 @@ $controller = new c_dataBuku();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-        <button type="submit" class="btn btn-primary">Simpan Buku</button>
+        <button type="submit" name="add" class="btn btn-primary">Simpan Buku</button>
       </div>
     </div>
   </div>
@@ -124,18 +124,31 @@ if(isset($_GET['edit'])){
             <!-- ... Bagian lain dari modal ... -->
             <div class="modal-body">
                 <div class="form-group">
-                    <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>" required>
+                    <input type="hidden" name="id_buku" class="form-control" value="<?php echo $idBuku; ?>" required>
                 </div>
                 <div class="form-group">
                     <label>Judul Buku</label>
                     <input type="text" name="judul" class="form-control" value="<?php echo $judul; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label>Status Anggota</label>
-                    <select name="status" class="form-control">
-                        <option value="1" <?php if($status == 1) echo 'selected'; ?>>Aktif</option>
-                        <option value="0" <?php if($status == 0) echo 'selected'; ?>>Tidak Aktif</option>
-                    </select>
+                    <label>Nama Pegarang</label>
+                    <input type="text" name="pengarang" class="form-control" value="<?php echo $pengarang; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Penerbit</label>
+                    <input type="text" name="penerbit" class="form-control" value="<?php echo $penerbit; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input type="text" name="isbn" class="form-control" value="<?php echo $ISBN; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Tahun</label>
+                    <input type="text" name="tahun" class="form-control" value="<?php echo $tahun; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Stok</label>
+                    <input type="text" name="stok" class="form-control" value="<?php echo $stok; ?>" required>
                 </div>
             </div>
             <!-- ... Bagian lain dari modal ... -->

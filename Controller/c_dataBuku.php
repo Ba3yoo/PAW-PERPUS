@@ -17,7 +17,7 @@ class c_dataBuku {
 
     public function editBuku($idBuku, $judul, $pengarang, $penerbit, $ISBN, $tahun, $stok) {
         include_once 'Model/m_dataBuku.php';
-        $this->model = new m_anggota();
+        $this->model = new m_dataBuku();
         $this->model->editBuku($idBuku, $judul, $pengarang, $penerbit, $ISBN, $tahun, $stok);
     }
 
@@ -38,10 +38,10 @@ if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $controller = new c_dataBuku();
     $controller->hapusBuku($id);
-} else if (isset($_POST['judul'])) {
+} else if (isset($_POST['add'])) {
     $dataBuku = new c_dataBuku();
     $dataBuku->tambahKolom($_POST['judul'], $_POST['pengarang'], $_POST['penerbit'], $_POST['isbn'], $_POST['tahun'], $_POST['stok']);
-    unset($_POST['judul']);
+    unset($_POST['add']);
     header('Location: dataBuku.php');
 } else if(isset($_POST['edit'])){
     $idBuku = $_POST['id_buku'];

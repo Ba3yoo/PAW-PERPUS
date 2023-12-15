@@ -45,7 +45,7 @@ if(isset($_GET['edit'])){
                     </div>
                     <br>
                     <div class="form-group">
-                        <label>stok</label>
+                        <label>Stok</label>
                         <input type="text" name="stok" value="<?php echo $_GET['stok']; ?>" required>
                     </div>
                     <br>

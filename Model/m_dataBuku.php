@@ -20,7 +20,7 @@ class m_dataBuku {
     public function editBuku($idBuku, $judul, $pengarang, $penerbit, $ISBN, $tahun, $stok) {
         $db = new Database();
         $mysqli = $db->getConnection();
-        $rs = $mysqli->query("UPDATE buku SET judul = '$judul' pengarang = '$pengarang' penerbit = '$penerbit' isbn = '$ISBN' tahun = '$tahun' stok = '$stok' where id_buku = '$idBuku'");
+        $rs = $mysqli->query("UPDATE buku SET judul = '$judul', pengarang = '$pengarang', penerbit = '$penerbit', isbn = '$ISBN', tahun = '$tahun', stok = '$stok' where id_buku = '$idBuku'");
         return $rs;
     }
 
