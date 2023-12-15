@@ -33,5 +33,22 @@ class m_denda{
         }
     }
 
+    public function searchDenda($id_denda){
+        $query = "SELECT * from denda where status_bayar = 0 and id_denda = '$id_denda'";
+
+        $db = new Database();
+        $mysqli = $db->getConnection();
+        $result = $mysqli->query($query);
+        if($result){
+            $data = array();
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+            return $data;
+        }else{
+            return false;
+        }
+    }
+
 
 }

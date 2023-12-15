@@ -16,8 +16,8 @@
 <body>
     <h2>Data Denda</h2>
     <nav class="navbar navbar-white bg-white">
-    <form class="d-flex justify-content-between custom-search-form">
-        <input class="form-control mr-sm-2" type="search" placeholder="Cari data denda" aria-label="Search">
+    <form class="d-flex justify-content-between custom-search-form" method="post" action="">
+        <input class="form-control mr-sm-2" type="search" name="search_query" placeholder="Cari data denda" aria-label="Search">
         <button class="btn btn-outline-success custom-search-button" type="submit" style="margin-left: 0.5rem;">Search</button>
     </form>
 </nav>
@@ -25,11 +25,15 @@
     <?php
 
 include_once "Model/m_denda.php";
-
 include_once "Model/Database.php";
 
 $dendaModel = new m_denda();
-$dataDenda = $dendaModel->tampilDenda();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $searchQuery = $_POST["search_query"];
+    $dataDenda = $dendaModel->searchDenda($searchQuery);
+} else {
+    $dataDenda = $dendaModel->tampilDenda();
+}
 include_once "View/DendaTabel.php";
 
 if ($dataDenda !== false) {
