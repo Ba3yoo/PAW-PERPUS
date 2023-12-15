@@ -16,9 +16,9 @@ $controller = new PinjamController();
 
 <body>
 
-<?php
+  <?php
   include "layouts/navbar.php";
-?>
+  ?>
 
   <div class="container">
     <div class="row">
@@ -30,16 +30,16 @@ $controller = new PinjamController();
     <div class="row">
       <div class="input-group">
         <div class="col-xs-6">
-          <select name="id_peminjam" class="btn btn-light dropdown-toggle">
-            <option value="">ID Anggota...</option>
+          <select name="id_peminjam" class="btn btn-light dropdown-toggle" style="max-width: 250px;">
+            <option value="">--Pilihan Anggota--</option>
             <?php
             $controller->dropDownMember();
             ?>
         </div>
         <span class="input-group-addon" style="padding:10px;">&nbsp</span>
         <div class="col-xs-6">
-          <select name="dropdown" class="btn btn-light dropdown-toggle">
-            <option value="">Select</option>
+          <select name="dropdown" class="btn btn-light dropdown-toggle" style="max-width: 250px;">
+            <option value="">--Pilihan Buku--</option>
             <?php
             $controller->dropDownBook();
             ?>
@@ -100,6 +100,15 @@ $controller = new PinjamController();
       submitter.disabled = values.includes('')
     })
   }
+
+  const options = document.querySelectorAll('option');
+
+  Array.from(options).forEach(element => {
+    if (element.textContent.length > 50) {
+      element.textContent =
+        element.textContent.slice(0, 50) + '...';
+    }
+  });
 
   const current = document.getElementById("peminjaman-nav");
   current.classList.add("active");
