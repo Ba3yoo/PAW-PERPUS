@@ -13,6 +13,10 @@
         .nav-item {
             margin-right: 7.7rem;
         }
+
+        * {
+            font-family: Garamond, serif;
+        }
     </style>
 </head>
 
