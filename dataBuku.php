@@ -111,13 +111,6 @@ Tambah Buku
       </div>
     </div>
   </div>
-  <?php
-// ...
-if(isset($_GET['edit'])){
-    $id = $_GET['edit'];
-    $nama = $_GET['nama'];
-    $status = $_GET['status'];
-?>
     <!-- Modal untuk Edit -->
     <form class="container" name="editBuku" method="post" action="c_dataBuku.php">
         <div class="modal fade" id="editBuku" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -155,7 +148,6 @@ if(isset($_GET['edit'])){
         </div>
     </form>
     <!-- Tutup Modal -->
-<?php } ?>
 </body>
 <script>
   let d = document, [inputs, submitter] = [
