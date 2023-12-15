@@ -31,12 +31,11 @@ $controller = new anggotaController();
     <div class="row">
       <div class="col-sm-15">
       <div class="feature" style="display: flex">
-        <form action="" method="get" style="display: flex">
+        <!-- <form action="" method="get" style="display: flex">
             <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Cari anggota" aria-label="Search">
             <button type="submit" name="search" class="btn btn-secondary">Cari</button>
-        </form>
+        </form> -->
       </div>
-      <br>
         <div class="card">
           <h5 class="card-header">Data Anggota  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAnggota">Tambah Anggota</button></h5>
           <!-- Modal -->
