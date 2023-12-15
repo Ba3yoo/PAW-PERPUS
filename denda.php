@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +12,18 @@
     <link rel="stylesheet" href="dendastyles.css">
     <title>Denda</title>
 </head>
+
 <body>
-<?php
+    <h2>Data Denda</h2>
+    <nav class="navbar navbar-white bg-white">
+    <form class="d-flex justify-content-between custom-search-form">
+        <input class="form-control mr-sm-2" type="search" placeholder="Cari data denda" aria-label="Search">
+        <button class="btn btn-outline-success custom-search-button" type="submit" style="margin-left: 0.5rem;">Search</button>
+    </form>
+</nav>
+
+    <?php
+
 include_once "Model/m_denda.php";
 
 include_once "Model/Database.php";
@@ -53,24 +64,27 @@ if ($dataDenda !== false) {
 }
 ?>
 
-<script>
-function bayarDenda(idDenda) {
-  console.log("Button clicked with ID Denda: " + idDenda);
-  $.ajax({
-        type: "POST",
-        url: "Controller/bayarDenda.php",
-        data: { id_denda: idDenda },
-        success: function(response) {
-            console.log(response); // Tampilkan respons di konsol
-            alert(response);
-            $("#row_" + idDenda).hide();
-        },
-        error: function(xhr, status, error) {
-            console.log(xhr.responseText); // Tampilkan pesan kesalahan di konsol
-            alert("Gagal memperbarui status bayar. Error: " + error);
-        }
-    });
-}
-</script>
+    <script>
+    function bayarDenda(idDenda) {
+        console.log("Button clicked with ID Denda: " + idDenda);
+        $.ajax({
+            type: "POST",
+            url: "Controller/bayarDenda.php",
+            data: {
+                id_denda: idDenda
+            },
+            success: function(response) {
+                console.log(response); // Tampilkan respons di konsol
+                alert(response);
+                $("#row_" + idDenda).hide();
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText); // Tampilkan pesan kesalahan di konsol
+                alert("Gagal memperbarui status bayar. Error: " + error);
+            }
+        });
+    }
+    </script>
 </body>
+
 </html>
