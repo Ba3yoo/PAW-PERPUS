@@ -19,15 +19,18 @@ class m_pengembalian {
     public function addPengembalian($id_peminjaman) {
         $db = new Database();
         $mysqli = $db->getConnection();
-        $mysqli->query("INSERT INTO pengembalian (pengembalian.id_anggota, pengembalian.id_buku, pengembalian.tgl_pinjam, pengembalian.tgl_kembali) SELECT peminjaman.id_anggota, peminjaman.id_buku, peminjaman.tgl_pinjam, peminjaman.tgl_kembali FROM peminjaman WHERE peminjaman.id_peminjaman = $id_peminjaman");
+        $mysqli->query("INSERT INTO pengembalian (pengembalian.id_anggota, pengembalian.id_buku, pengembalian.tgl_pinjam, pengembalian.tgl_kembali) 
+                        SELECT peminjaman.id_anggota, peminjaman.id_buku, peminjaman.tgl_pinjam, peminjaman.tgl_kembali 
+                        FROM peminjaman 
+                        WHERE peminjaman.id_peminjaman = $id_peminjaman");
         $mysqli->query("UPDATE buku
-        SET stok = stok + 1
-        WHERE id_buku = nomor_buku;");
+                        SET stok = stok + 1
+                        WHERE id_buku = nomor_buku;");
         $this->deletePeminjaman($id_peminjaman);
         $id_pengembalian = $mysqli->query("SELECT id_pengembalian
-        FROM pengembalian
-        ORDER BY id_pengembalian DESC
-        LIMIT 1;");
+                                            FROM pengembalian
+                                            ORDER BY id_pengembalian DESC
+                                            LIMIT 1;");
         $this->createFee($id_pengembalian);
     }
 
