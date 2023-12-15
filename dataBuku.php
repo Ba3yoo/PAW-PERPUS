@@ -33,7 +33,7 @@ $controller = new c_dataBuku();
 
   <div class="container">
     <div class="row">
-      <h1>Data Buku</h1>
+      <h1>Perpustakaan</h1>
     </div>
   </div>
 
@@ -45,7 +45,7 @@ $controller = new c_dataBuku();
       <div class="col-sm-15">
 
         <div class="card">
-          <h5 class="card-header">Data Buku Perpustakaan</h5>
+          <h5 class="card-header">Data Buku</h5>
           <div class="card-body">
             <table class="table table-striped">
               <thead>
