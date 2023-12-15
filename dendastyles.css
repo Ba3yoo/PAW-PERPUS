@@ -2,3 +2,22 @@ body{
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+/* dendastyles.css */
+
+.custom-search-form {
+    background-color: white; /* Bootstrap default background color */
+    padding: 10px;
+}
+
+.btn-outline-success.custom-search-button {
+    color: #fff; /* Set text color to white */
+    background-color: #6c757d; /* Set background color to gray */
+    border-color: #6c757d; /* Set border color to gray */
+}
+
+.btn-outline-success.custom-search-button:hover {
+    color: #fff; /* Set text color to white on hover */
+    background-color: #495057; /* Set background color to darker gray on hover */
+    border-color: #495057; /* Set border color to darker gray on hover */
+}
