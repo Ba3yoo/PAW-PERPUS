@@ -31,10 +31,44 @@ $controller = new anggotaController();
             <input type="search" name="keyword" placeholder="Cari anggota">
             <button type="submit" name="search" class="btn btn-secondary">Cari</button>
         </form>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAnggota">Tambah Anggota</button>
       </div>
         <div class="card">
-          <h5 class="card-header">Data Anggota</h5>
+          <h5 class="card-header">Data Anggota  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAnggota">Tambah Anggota</button></h5>
+          <!-- Modal -->
+            <form class="container" name="addition" method="post" action="">
+            <div class="modal fade" id="addAnggota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Anggota</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+
+                    <div class="form-group">
+                        <label>Nama Anggota</label>
+                        <input type="text" name="nama" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status Anggota</label>
+                        <select name="status">
+                          <option value="1">Aktif</option>
+                          <option value="0">Tidak Aktif</option>
+                        </select>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" name="add" class="btn btn-primary">Simpan</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+            <!-- Tutup Modal -->
+
           <div class="card-body">
             <table class="table table-striped">
               <thead>
@@ -55,33 +89,5 @@ $controller = new anggotaController();
       </div>
     </div>
   </div>
-
-    <div class="modal fade" id="addAnggota" tabindex="-1" role="dialog" aria-labelledby="addAnggota" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="labelAdd">Tambah Anggota</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form action="anggotaController.php" method="post">
-                <label for="nama">Nama Anggota:</label>
-                <input type="text" name="nama" placeholder="Nama Anggota Baru" required>
-                <label for="status">Status Anggota:</label>
-                <select id="cars" name="cars">
-                    <option value="0">Tidak Aktif</option>
-                    <option value="1">Aktif</option>
-                </select>
-                <button type="submit"name="add" class="btn btn-primary">Tambah</button>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-    </div>
-    </div>
 </body>
 </html>

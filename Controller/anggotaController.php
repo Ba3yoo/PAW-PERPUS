@@ -3,7 +3,7 @@ class anggotaController {
     public $model;
     
     public function addAnggota($nama, $status) {
-        include_once '../Model/m_anggota.php';
+        include_once 'Model/m_anggota.php';
         $this->model = new m_anggota();
         $this->model->addAnggota($nama, $status);
     }
@@ -17,7 +17,7 @@ class anggotaController {
         include_once '../Model/m_anggota.php';
         $this->model = new m_anggota();
         $this->model->deleteAnggota($idAnggota);
-        header('location:../anggota.php');
+        header('Location: ../anggota.php');
     }
     public function editAnggota($id, $nama, $status) {
         include_once '../Model/m_anggota.php';
@@ -46,9 +46,9 @@ if(isset($_GET['delete'])){
     $status = $_GET['status'];
     $controller = new anggotaController();
     $controller->editAnggota($id, $nama, $status);
-} else if(isset($_GET['add'])){
-    $nama = $_GET['nama'];
-    $status = $_GET['status'];
+} if (isset($_POST['nama'])) {
     $controller = new anggotaController();
-    $controller->addAnggota($nama, $status);
+    $controller->addAnggota($_POST['nama'], $_POST['status']);
+    unset($_POST['nama']);
+    header('Location: anggota.php');
 }
