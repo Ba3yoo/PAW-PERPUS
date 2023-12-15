@@ -11,8 +11,9 @@ foreach ($buku as $row) {
         "<td>{$row['penerbit']}</td>",
         "<td>{$row['isbn']}</td>",
         "<td>{$row['tahun']}</td>",
-        "<td>{$row['stok']}</td>",
-        "</tr>";
+        "<td>{$row['stok']}</td>";
+        echo "<td><a href='controller/c_dataBuku.php?delete={$row['id_buku']}' class='btn btn-secondary'>Delete</a></td>";
+        echo "</tr>";
 }
 
 echo "</tbody>";
