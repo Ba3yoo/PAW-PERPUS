@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-primary" style="background-color: #F27851;">
+    <nav class="navbar navbar-expand-lg bg-body-primary fixed-top" style="background-color: #F27851;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

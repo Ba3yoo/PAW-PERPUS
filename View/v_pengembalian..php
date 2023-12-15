@@ -2,12 +2,7 @@
 
 include_once 'Controller/c_pengembalian.php';
 $controller = new c_pengembalian();
-if (isset($_POST["id_peminjaman"])) {
-    $id_peminjaman = $_POST["id_peminjaman"];
-    $controller->tambahPengembalian($id_peminjaman);
-} else {
-    echo "ID tidak valid.";
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,36 +22,40 @@ if (isset($_POST["id_peminjaman"])) {
     include "layouts/navbar.php";
     ?>
 
-    <div>
-        <h5>Pengembalian Buku</h5>
+    <div class="card">
+        <h5 class="card-header">Pengembalian Buku</h5>
+        <div class="card-body">
+            <div style="height:300px;overflow:auto;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Judul Buku</th>
+                            <th>Peminjam</th>
+                            <th>Tanggal Pinjam</th>
+                            <th>Tanggal Kembali</th>
+                            <th>Tanggal Terima</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        $i = 1;
+                        foreach ($data as $borrow) {
+                            echo "<tr>",
+                            "<td>".$i++."</td>",
+                            "<td>".$borrow["nama"]."</td>",
+                            "<td>".$borrow["judul"]."</td>",
+                            "<td>".$borrow["tgl_pinjam"]."</td>",
+                            "<td>".$borrow["tgl_kembali"]."</td>",
+                            "<td>".$borrow["tgl_terima"]."</td>",
+                            "</tr>";
+                        }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Judul Buku</th>
-                <th>Peminjam</th>
-                <th>Tanggal Pinjam</th>
-                <th>Tanggal Kembali</th>
-                <th>Tanggal Terima</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-            $i = 1;
-            foreach ($data as $borrow) {
-                echo "<tr>",
-                "<td>".$i++."</td>",
-                "<td>".$borrow["nama"]."</td>",
-                "<td>".$borrow["judul"]."</td>",
-                "<td>".$borrow["tgl_pinjam"]."</td>",
-                "<td>".$borrow["tgl_kembali"]."</td>",
-                "<td>".$borrow["tgl_terima"]."</td>",
-                "</tr>";
-            }
-        ?>
-        </tbody>
-    </table>
 
 
 </body>
