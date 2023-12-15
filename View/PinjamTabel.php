@@ -6,7 +6,7 @@ foreach ($borrow as $borrow) {
         "<td>$borrow[nama]</td>",
         "<td>$borrow[tgl_pinjam]</td>",
         "<td>$borrow[tgl_kembali]</td>",
-        '<td><button class="btn btn-secondary">Kembalikan</button></td>';
+        '<td><a class="btn btn-secondary" href="pengembalian.php?id='. "$borrow[id_peminjaman]" .'">Kembalikan</a></td>';
         "</tr>";
 }
 echo "</tbody>";
