@@ -28,7 +28,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php" id="anggota-nav">Home</a>
+                    <a class="nav-link" href="index.php" id="home-nav" style="margin-left:2rem;">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="anggota.php" id="anggota-nav">Anggota</a>
