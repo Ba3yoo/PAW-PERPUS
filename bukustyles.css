@@ -1,0 +1,9 @@
+body{
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.add {
+    background-color: rgb(23, 76, 248);
+    padding: 10px;
+}

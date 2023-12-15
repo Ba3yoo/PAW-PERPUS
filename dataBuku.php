@@ -150,17 +150,17 @@ Tambah Buku
     <!-- Tutup Modal -->
 </body>
 <script>
-  let d = document, [inputs, submitter] = [
-    d.querySelectorAll('[type="text"], select'),
-    d.querySelector('#addbutton')]
-submitter.disabled = true
+document.addEventListener('DOMContentLoaded', () => {
+  const inputs = document.querySelectorAll('[type="text"], select');
+  const submitter = document.querySelector('#addbutton');
+  submitter.disabled = true;
 
-for (i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener('input',() => {
-    let values = []
-    inputs.forEach(v => values.push(v.value))
-    submitter.disabled = values.includes('')
-  })
-}
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('input', () => {
+      const values = Array.from(inputs).map(v => v.value);
+      submitter.disabled = values.includes('');
+    });
+  }
+});
 </script>
 </html>
