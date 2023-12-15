@@ -11,7 +11,7 @@
     <title>Document</title>
     <style>
         .nav-item {
-            margin-right: 8rem;
+            margin-right: 7.7rem;
         }
     </style>
 </head>
