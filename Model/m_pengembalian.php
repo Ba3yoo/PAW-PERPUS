@@ -25,6 +25,7 @@ class m_pengembalian {
                         SELECT peminjaman.id_anggota, peminjaman.id_buku, peminjaman.tgl_pinjam, peminjaman.tgl_kembali 
                         FROM peminjaman 
                         WHERE peminjaman.id_peminjaman = '$id_peminjaman'");
+                        
         $query = "SELECT id_buku FROM pengembalian ORDER BY id_pengembalian DESC LIMIT 1;";
         $rs = $mysqli->query($query);
         
