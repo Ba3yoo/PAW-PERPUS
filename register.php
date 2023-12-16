@@ -53,6 +53,7 @@ function cek_nama($username, $mysqli)
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="icon" href="/assets/images/icon.png" type="image/x-icon">
 
 
     <!-- Load fonts style after rendering the layout styles -->
