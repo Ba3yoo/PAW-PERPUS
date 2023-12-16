@@ -25,17 +25,6 @@ class m_anggota {
         return $rs;
     }
 
-    public function searchAnggota($katakunci) {
-        $db = new Database();
-        $mysqli = $db->getConnection();
-        $rs = $mysqli->query("SELECT * FROM anggota WHERE id_anggota = '$katakunci' OR nama LIKE '%$katakunci%'"); // Memperbaiki query pencarian
-        $rows = array();
-        while ($row = $rs->fetch_assoc()) {
-            $rows[] = $row;
-        }
-        return $rows;
-    }
-
     public function showAnggota() {
         $db = new Database();
         $mysqli = $db->getConnection();

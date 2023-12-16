@@ -7,12 +7,6 @@ class anggotaController {
         $this->model = new m_anggota();
         $this->model->addAnggota($nama, $status);
     }
-    public function searchAnggota($keyword) {
-        include_once 'Model/m_anggota.php';
-        $this->model = new m_anggota();
-        $hasilPencarian = $this->model->searchAnggota($keyword);
-        include 'View/tabelAnggota.php';
-    }
     public function deleteAnggota($idAnggota) {
         include_once '../Model/m_anggota.php';
         $this->model = new m_anggota();
