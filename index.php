@@ -34,7 +34,8 @@ if (!isset($_SESSION['username'])) {
 include_once "layouts/navbar.php";
 ?>
 
-<h2 style="text-align: center;">Selamat datang di Sistem Perpustakaan Anda!</h2>
+<h2 style="text-align: center; font-size:60px;">Selamat datang di Sistem PerpusAnda!</h2>
+<br>
 
 <div id="carouselExampleDark" class="carousel carousel-dark slide" style="height:40rem;">
   <div class="carousel-indicators">
